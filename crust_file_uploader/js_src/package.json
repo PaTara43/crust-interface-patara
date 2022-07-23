@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "crust-file-uploader",
+  "version": "0.1.0",
+  "description": "Simple project for updating any files to a Crust Network.",
+  "main": "app.js",
+  "scripts": {
+    "upload": "node upload.js"
+  },
+  "dependencies": {
+    "@crustio/type-definitions": "^1.3.0",
+    "@polkadot/api": "4.2.2-4",
+    "ipfs-http-client": "^54.0.2",
+    "nodemon": "^2.0.7",
+    "winston": "^3.3.3"
+  },
+  "author": "Pavel Tarasov",
+  "license": "ISC"
+}
