@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
 
-from logging import getLogger
 from setuptools import setup
-
-logger = getLogger(__name__)
-
-
-# install yarn packages somehow
 
 setup(name='crust-file-uploader',
       version='0.2.0',
