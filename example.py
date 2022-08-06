@@ -1,9 +1,14 @@
-from crust_file_uploader import upload_file
+from crust_file_uploader import CrustUploader, Endpoints
 
-ipfs_hash: str = upload_file(
-    "sample_file.txt",
-    "<seed>",
-    test_network=True,
-)
+tester_seed = "<seed>"
 
-print(ipfs_hash)
+file_uploader = CrustUploader(seed=tester_seed, remote_ws=Endpoints.Testnet)
+
+print(file_uploader.get_balance())
+price = file_uploader.get_appx_store_price(35*1024)
+print(price)
+print(file_uploader.store_file("QmanD3QhdJMwxgqRFAeHX4nTTKh2dgD6ZExeJkca7GkGZB", 35*1024))
+# One more 6 months
+print(file_uploader.add_renewal_pool_balance("QmanD3QhdJMwxgqRFAeHX4nTTKh2dgD6ZExeJkca7GkGZB", price))
+# Not supported yet due to decoder issues
+print(file_uploader.get_replicas("QmanD3QhdJMwxgqRFAeHX4nTTKh2dgD6ZExeJkca7GkGZB"))

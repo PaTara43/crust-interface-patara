@@ -1,6 +1,7 @@
-class FailedToUploadFile(Exception):
+class NoPrivateKeyException(Exception):
     """
-    Failed to upload a file to Crust Network.
+    No private key was provided so unable to perform any operations requiring message signing.
+
     """
 
     pass

@@ -4,10 +4,6 @@ This is a simple tool to upload your files to a Crust network.
 
 ## Setup
 
-### Prerequisites
-- nvm [installation](https://github.com/nvm-sh/nvm#installing-and-updating)
-- `node` >= 15 (update with `nvm install node`)
-- `yarn` (install with `sudo npm install --global yarn`)
 #### For Rocky Testnet
 - create an account on [Crust Rocky Testnet](https://apps.crust.network/?rpc=wss%3A%2F%2Frpc-rocky.crust.network#/explorer)
 - ask for tokens in [faucet](https://discord.gg/d6XuBXCqxU)
@@ -16,22 +12,14 @@ This is a simple tool to upload your files to a Crust network.
 ```bash
 git clone https://github.com/PaTara43/crust-file-uploader/
 cd crust-file-uploader
-# rn you have to manually go and install Node dependencies via
-cd crust_file_uploader/js_src
-yarn
-cd ../..
-# I promise to add automation in setup.py in future:) 
 pip3 istall .
 ```
 
-## Run
+## Features
 
-```python
-from crust_file_uploader import upload_file
-
-upload_file(
-    "sample_file.txt",
-    "<seed>",
-    test_network=True,
-) ## -> IPFS hash of the uploaded file
-```
+- Check account balance with `get_balance`
+- Calculate file storage cost with `get_appx_store_price`
+- Store file with `store_file`
+- Add renewal balance with `add_renewal_pool_balance`
+- Check replicas with `get_replicas` !! # Not supported yet due to decoder issues
+- Check docstrings for additional info!
