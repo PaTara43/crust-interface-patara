@@ -1,4 +1,8 @@
-#crust-file-uploader
+# crust-file-uploader
+
+https://crust.network/
+https://apps.crust.network/
+https://wiki.crust.network/en
 
 This is a simple tool to upload your files to a Crust network.
 
