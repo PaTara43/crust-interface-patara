@@ -1,8 +1,11 @@
+import requests
 import typing as tp
 
+from ast import literal_eval
 from substrateinterface import Keypair
 
-from .exceptions import NoPrivateKeyException
+from .constants import W3GW
+from .exceptions import NoPrivateKeyException, FailedToUploadFile
 from .utils import Endpoints, create_keypair, extrinsic, query
 
 
@@ -104,3 +107,34 @@ class CrustUploader:
             "place_storage_order",
             dict(cid=ipfs_cid, reported_file_size=file_size, tips=tips, _memo=""),
         )
+
+    def upload_file_w3gw(self, file_path: str) -> tp.Tuple[str, int]:
+        """
+        Upload a file to IPFS via IPFS Web3 Gateway with private key-signed message. The signed message is user's
+            pubkey. https://wiki.crust.network/docs/en/buildIPFSWeb3AuthGW#usage
+
+        :param file_path: Path to a file to be uploaded.
+
+        :return: (IPFS cid, file size in bytes)
+
+        """
+
+        if not self._keypair:
+            raise NoPrivateKeyException("No seed was provided, unable to authenticate in Web3 Gateway service .")
+
+        with open(file_path, "rb") as f:
+            content = f.read()
+
+        files = {"file@": (None, content)}
+
+        response = requests.post(
+            W3GW,
+            files=files,
+            auth=(f"sub-{self._keypair.ss58_address}", f"0x{self._keypair.sign(self._keypair.ss58_address).hex()}"),
+        )
+
+        if response.status_code == 200:
+            resp = literal_eval(response.content.decode('utf-8'))
+            return resp["Hash"], int(resp["Size"])
+        else:
+            raise FailedToUploadFile(response.status_code)

@@ -19,6 +19,7 @@ pip3 istall .
 
 - Check account balance with `get_balance`
 - Calculate file storage cost with `get_appx_store_price`
+- Upload files to IPFS through web3 gateway with `upload_file_w3gw`
 - Store file with `store_file`
 - Add renewal balance with `add_renewal_pool_balance`
 - Check replicas with `get_replicas` !! # Not supported yet due to decoder issues
