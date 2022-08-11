@@ -1,21 +1,38 @@
-from crust_file_uploader import UploaderMainnet, Endpoints
+from crust_file_uploader import UploaderMainnet, UploaderShadow, Web3Gateway
 
 tester_tokens_seed = "<seed>"
 
-file_uploader = UploaderMainnet(seed=tester_tokens_seed, remote_ws=Endpoints.Testnet)
-file_path = "../file.extension"
+shadow = UploaderShadow(seed=tester_tokens_seed)
+mainnet = UploaderMainnet()
+w3gw = Web3Gateway(tester_tokens_seed)
 
-cid, size = file_uploader.upload_file_w3gw(file_path, pin=True)
+file_path = "<path/to/file>"
+
+# Upload file to IPFS
+cid, size = w3gw.upload_file(file_path, pin=True)
 print(cid, size)
 
-balance = file_uploader.get_balance()
+# Check balance
+balance = shadow.get_balance()
 print(balance)
-price = file_uploader.get_appx_store_price(size)
+
+# Check price in Main net. Price in pCRUs
+price = mainnet.get_appx_store_price(size)
 print(price)
-file_stored = file_uploader.store_file(cid, size)
+
+# Store file in Shadow for CSMs
+file_stored = shadow.store_file(cid, size)
 print(file_stored)
-file_prepaid = file_uploader.add_renewal_pool_balance(cid, price*2)
+
+# Check balance again
+balance = shadow.get_balance()
+print(balance)
+
+# This is for CRUs
+file_prepaid = mainnet.add_renewal_pool_balance(cid, price*2)
 print(file_prepaid)
-# replicas = file_uploader.get_replicas(cid)
-# print(replicas)
+
+# This is in Crust Main net
+replicas = mainnet.get_replicas(cid)
+print(replicas)
 # Not possible yet due to type_registry issue.

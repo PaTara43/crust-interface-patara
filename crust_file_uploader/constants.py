@@ -17,8 +17,8 @@ CRUST_TYPE_REGISTRY = {
                 ["prepaid", "Balance"],
                 ["reported_replica_count", "u32"],
                 ["remaining_paid_count", "u32"],
-                ["replicas", "BTreeMap<AccountId, Replica<AccountId>>"]
-            ]
+                ["replicas", "BTreeMap<AccountId, Replica<AccountId>>"],
+            ],
         },
         "Replica": {
             "type": "struct",
@@ -27,8 +27,8 @@ CRUST_TYPE_REGISTRY = {
                 ["valid_at", "BlockNumber"],
                 ["anchor", "SworkerAnchor"],
                 ["is_reported", "Bool"],
-                ["created_at", "Option<BlockNumber>"]
-            ]
+                ["created_at", "Option<BlockNumber>"],
+            ],
         },
     }
 }

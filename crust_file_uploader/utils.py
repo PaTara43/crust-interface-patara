@@ -2,11 +2,8 @@ import typing as tp
 
 from substrateinterface import SubstrateInterface, Keypair
 
-from .constants import (
-    CRUST_SS_58_FORMAT,
-    CRUST_TYPE_REGISTRY_PRESET,
-    CRUST_TYPE_REGISTRY,
-)
+from .constants import CRUST_SS_58_FORMAT, CRUST_TYPE_REGISTRY_PRESET, CRUST_TYPE_REGISTRY
+
 
 def create_keypair(seed: str) -> Keypair:
     """

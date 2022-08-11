@@ -2,7 +2,7 @@ import typing as tp
 
 from substrateinterface import Keypair
 
-from constants import CRUST_MAINNET_ENDPOINT, CRUST_ROCKY_TESTNET_ENDPOINT
+from .constants import CRUST_MAINNET_ENDPOINT, CRUST_ROCKY_TESTNET_ENDPOINT
 from .exceptions import NoPrivateKeyException
 from .utils import create_keypair, extrinsic, query
 
@@ -108,4 +108,3 @@ class UploaderMainnet:
             "place_storage_order",
             dict(cid=ipfs_cid, reported_file_size=file_size, tips=tips, _memo=""),
         )
-

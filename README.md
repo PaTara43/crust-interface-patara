@@ -21,10 +21,11 @@ pip3 istall .
 
 ## Features
 
-- Upload files to IPFS through Web3 gateway with `upload_file_w3gw`
-- Check account balance with `get_balance`
-- Calculate file storage cost with `get_appx_store_price`
-- Store file with `store_file`
-- Add renewal balance with `add_renewal_pool_balance`
-- Check replicas with `get_replicas` !! # Not supported yet due to decoder issues https://github.com/crustio/crust/issues/891
-- Check docstrings for additional info!
+The module is divided into `UploaderMainnet`, `UploaderShadow` and `Web3Gateway`
+
+`Web3Gateway` allows you to upload files to IPFS via Web3-authenticate gateway.
+
+`UploaderMainnet` provides Crust interaction functionality to check user balance, calculate file storage price, placing
+file storage order, add tokens to renewal pool and checking replicas count (not possible yet due to type_registry issues)
+
+`UploaderShadow` allows you to perform `xstorage` extrinsic in Crust Shadow network (Not possible yet due to wasm issue)

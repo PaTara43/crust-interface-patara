@@ -19,9 +19,7 @@ class Web3Gateway:
 
         self._keypair: Keypair = create_keypair(seed)
 
-    def upload_file(
-        self, file_path: str, file_name: tp.Optional[str] = None, pin: bool = False
-    ) -> tp.Tuple[str, int]:
+    def upload_file(self, file_path: str, file_name: tp.Optional[str] = None, pin: bool = False) -> tp.Tuple[str, int]:
         """
         Upload a file to IPFS via IPFS Web3 Gateway with private key-signed message. The signed message is user's
             pubkey. https://wiki.crust.network/docs/en/buildIPFSWeb3AuthGW#usage.
@@ -36,7 +34,7 @@ class Web3Gateway:
 
         with open(file_path, "rb") as f:
             content = f.read()
-        file_name_ = file_name or file_path[file_path.rfind("/") + 1:len(file_path)]
+        file_name_ = file_name or file_path[file_path.rfind("/") + 1 : len(file_path)]
 
         response = requests.post(
             W3GW,
