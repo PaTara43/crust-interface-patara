@@ -1,27 +1,12 @@
 import typing as tp
 
-from enum import Enum
 from substrateinterface import SubstrateInterface, Keypair
 
 from .constants import (
-    CRUST_MAINNET_ENDPOINT,
-    CRUST_ROCKY_TESTNET_ENDPOINT,
-    CRUST_SHADOW_ENDPOINT,
     CRUST_SS_58_FORMAT,
     CRUST_TYPE_REGISTRY_PRESET,
     CRUST_TYPE_REGISTRY,
 )
-
-
-class Endpoints(Enum):
-    """
-    Class for enumerating endpoints of different Crust Networks.
-    """
-
-    Mainnet = CRUST_MAINNET_ENDPOINT
-    Testnet = CRUST_ROCKY_TESTNET_ENDPOINT
-    Shadow = CRUST_SHADOW_ENDPOINT
-
 
 def create_keypair(seed: str) -> Keypair:
     """

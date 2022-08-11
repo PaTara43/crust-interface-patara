@@ -1,8 +1,8 @@
-from crust_file_uploader import CrustUploader, Endpoints
+from crust_file_uploader import UploaderMainnet, Endpoints
 
 tester_tokens_seed = "<seed>"
 
-file_uploader = CrustUploader(seed=tester_tokens_seed, remote_ws=Endpoints.Testnet)
+file_uploader = UploaderMainnet(seed=tester_tokens_seed, remote_ws=Endpoints.Testnet)
 file_path = "../file.extension"
 
 cid, size = file_uploader.upload_file_w3gw(file_path, pin=True)
