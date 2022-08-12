@@ -35,4 +35,3 @@ print(file_prepaid)
 # This is in Crust Main net
 replicas = mainnet.get_replicas(cid)
 print(replicas)
-# Not possible yet due to type_registry issue.

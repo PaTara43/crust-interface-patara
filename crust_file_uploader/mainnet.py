@@ -93,7 +93,7 @@ class UploaderMainnet:
 
         :param ipfs_cid: Uploaded file cid.
         :param file_size: Uploaded file size, bytes.
-        :param tips: Tips for the file host.
+        :param tips: Tips for the file host, pCRUs.
 
         :return: transaction hash, block_num-event_idx
         """
