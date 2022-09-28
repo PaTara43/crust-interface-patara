@@ -23,7 +23,7 @@ class FailedToPinFile(Exception):
     pass
 
 
-class InvaliIPFScidFormat(Exception):
+class InvaliIdPFSCIDFormat(Exception):
     """
     Invalid IPFS cid format. The right example: QmZ4tDuvesekSs4qM5ZBKpXiZGun7S2CYtEZRB3DYXkjGx.
     """

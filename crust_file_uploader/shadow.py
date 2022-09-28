@@ -42,15 +42,15 @@ class UploaderShadow:
 
         return query(self._shadow, "System", "Account", self._keypair.ss58_address).value["data"]["free"]
 
-    def store_file(self, ipfs_cid: str, file_size: int, tips: int = 0) -> tp.Tuple[str, str]:
+    def store_file(self, ipfs_cid: str, file_size: int) -> tp.Tuple[str, str]:
         """
         Store a file `already uploaded` to IPFS providing its cid and size.
 
         :param ipfs_cid: Uploaded file cid.
         :param file_size: Uploaded file size, bytes.
-        :param tips: Tips for the file host.
 
-        :return: transaction hash, block_num-event_idx
+        :return: transaction hash, block_num-event_idx.
+
         """
 
         if not self._keypair:
@@ -59,7 +59,7 @@ class UploaderShadow:
         return extrinsic(
             self._shadow,
             self._keypair,
-            "Xstorage",
-            "place_storage_order",
-            dict(cid=ipfs_cid, size=file_size, currency_id="SelfReserve"),
+            "xstorage",
+            "place_storage_order_through_parachain",
+            dict(cid=ipfs_cid, size=file_size),
         )

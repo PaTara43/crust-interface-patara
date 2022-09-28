@@ -5,7 +5,7 @@ from ast import literal_eval
 from substrateinterface import Keypair
 
 from .constants import W3GW, W3PS
-from .exceptions import NoPrivateKeyException, FailedToUploadFile, FailedToPinFile, InvaliIPFScidFormat
+from .exceptions import NoPrivateKeyException, FailedToUploadFile, FailedToPinFile, InvaliIdPFSCIDFormat
 from .utils import create_keypair
 
 
@@ -69,7 +69,7 @@ class Web3Gateway:
             raise NoPrivateKeyException("No seed was provided, unable to authenticate in Web3 Gateway service .")
 
         if len(ipfs_cid) != 46 or not ipfs_cid.startswith("Qm"):
-            raise InvaliIPFScidFormat("Invalid IPFS cid format!")
+            raise InvaliIdPFSCIDFormat("Invalid IPFS cid format!")
 
         body = {"cid": ipfs_cid, "name": filename}
 

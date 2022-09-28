@@ -2,7 +2,7 @@ import typing as tp
 
 from substrateinterface import SubstrateInterface, Keypair
 
-from .constants import CRUST_SS_58_FORMAT, CRUST_TYPE_REGISTRY_PRESET, CRUST_TYPE_REGISTRY
+from .constants import CRUST_SS_58_FORMAT, CRUST_TYPE_REGISTRY_PRESET
 
 
 def create_keypair(seed: str) -> Keypair:
@@ -40,8 +40,7 @@ def extrinsic(
     interface: SubstrateInterface = SubstrateInterface(
         url=remote_ws,
         ss58_format=CRUST_SS_58_FORMAT,
-        type_registry_preset=CRUST_TYPE_REGISTRY_PRESET,
-        type_registry=CRUST_TYPE_REGISTRY,
+        type_registry_preset=CRUST_TYPE_REGISTRY_PRESET
     )
 
     call = interface.compose_call(call_module=call_module, call_function=call_function, call_params=params)
@@ -71,7 +70,6 @@ def query(
         url=remote_ws,
         ss58_format=CRUST_SS_58_FORMAT,
         type_registry_preset=CRUST_TYPE_REGISTRY_PRESET,
-        type_registry=CRUST_TYPE_REGISTRY,
     )
 
     return interface.query(storage_module, storage_function, [params] if params else None)
