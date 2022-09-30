@@ -1,3 +1,3 @@
-from .mainnet import UploaderMainnet
-from .shadow import UploaderShadow
-from .web3_gateway import Web3Gateway
+from .base import Base
+from .mainnet import Mainnet
+from .shadow import Shadow

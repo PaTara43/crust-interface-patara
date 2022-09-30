@@ -1,31 +1,18 @@
 import typing as tp
 
-from substrateinterface import Keypair
+from substrateinterface import KeypairType
 
-from .constants import CRUST_MAINNET_ENDPOINT, CRUST_ROCKY_TESTNET_ENDPOINT
-from .exceptions import NoPrivateKeyException
-from .utils import create_keypair, extrinsic, query
+from .base import Base
 
 
-class UploaderMainnet:
+class Mainnet(Base):
     """
     Class made for interacting with Crust Network to store files via Web3 services.
     """
 
-    def __init__(self, seed: str = None, testnet: bool = False) -> None:
-        """
-        Initialize Crust uploader class. Set websocket and keypair.
+    def __init__(self, seed: tp.Optional[str] = None, crypto_type: int = KeypairType.SR25519):
 
-        :param seed: Account seed.
-        :param testnet: Whether connect to Crust Main net or Rocky testnet.
-
-        """
-        self._remote_ws: str = CRUST_ROCKY_TESTNET_ENDPOINT if testnet else CRUST_MAINNET_ENDPOINT
-
-        if seed:
-            self._keypair: Keypair = create_keypair(seed)
-        else:
-            self._keypair = None
+        super().__init__(chain="mainnet", seed=seed, crypto_type=crypto_type)
 
     def get_balance(self) -> int:
         """
@@ -35,10 +22,7 @@ class UploaderMainnet:
 
         """
 
-        if not self._keypair:
-            raise NoPrivateKeyException("No seed was provided, unable to get self balance.")
-
-        return query(self._remote_ws, "System", "Account", self._keypair.ss58_address).value["data"]["free"]
+        return self.query("System", "Account", self.keypair.ss58_address).value["data"]["free"]
 
     def get_appx_store_price(self, file_size: int) -> int:
         """
@@ -50,9 +34,9 @@ class UploaderMainnet:
         """
 
         # Returns base size-independent fee, pCRUs
-        base_fee = query(self._remote_ws, "Market", "FileBaseFee").value
+        base_fee = self.query("Market", "FileBaseFee").value
         # Returns pCRUs fee per MB
-        size_fee = query(self._remote_ws, "Market", "FileByteFee").value
+        size_fee = self.query("Market", "FileByteFee").value
 
         return round(base_fee + size_fee * file_size / (1024 ** 2))
 
@@ -66,7 +50,7 @@ class UploaderMainnet:
 
         """
 
-        return query(self._remote_ws, "Market", "FilesV2", ipfs_cid).value["reported_replica_count"]
+        return self.query("Market", "FilesV2", ipfs_cid).value["reported_replica_count"]
 
     def add_renewal_pool_balance(self, ipfs_cid: str, amount: int) -> tp.Tuple[str, str]:
         """
@@ -82,10 +66,7 @@ class UploaderMainnet:
 
         """
 
-        if not self._keypair:
-            raise NoPrivateKeyException("No seed was provided, unable to use extrinsics.")
-
-        return extrinsic(self._remote_ws, self._keypair, "Market", "add_prepaid", dict(cid=ipfs_cid, amount=amount))
+        return self.extrinsic("Market", "add_prepaid", dict(cid=ipfs_cid, amount=amount))
 
     def store_file(self, ipfs_cid: str, file_size: int, tips: int = 0) -> tp.Tuple[str, str]:
         """
@@ -98,13 +79,6 @@ class UploaderMainnet:
         :return: transaction hash, block_num-event_idx
         """
 
-        if not self._keypair:
-            raise NoPrivateKeyException("No seed was provided, unable to use extrinsics.")
-
-        return extrinsic(
-            self._remote_ws,
-            self._keypair,
-            "Market",
-            "place_storage_order",
-            dict(cid=ipfs_cid, reported_file_size=file_size, tips=tips, _memo=""),
+        return self.extrinsic(
+            "Market", "place_storage_order", dict(cid=ipfs_cid, reported_file_size=file_size, tips=tips, _memo="")
         )
