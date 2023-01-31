@@ -5,8 +5,8 @@ description = "A simple tool to interact with Crust Shadow and Crust Mainnet. Un
 authors = ["PaTara43 <p040399@outlook.com>"]
 license = "Apache-2.0"
 
-homepage = "https://github.com/Multi-Agent-io/crust-interface-patara"
-repository = "https://github.com/Multi-Agent-io/crust-interface-patara"
+homepage = "https://github.com/PaTara43/crust-interface-patara"
+repository = "https://github.com/PaTara43/crust-interface-patara"
 documentation = "https://github.com/PaTara43/crust-interface-patara/blob/main/README.md"
 
 readme = "README.md"
