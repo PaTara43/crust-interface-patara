@@ -5,11 +5,49 @@ description = "A simple tool to interact with Crust Shadow and Crust Mainnet. Un
 authors = ["PaTara43 <p040399@outlook.com>"]
 license = "Apache-2.0"
 
+homepage = "https://github.com/Multi-Agent-io/crust-interface-patara"
+repository = "https://github.com/Multi-Agent-io/crust-interface-patara"
+documentation = "https://github.com/PaTara43/crust-interface-patara/blob/main/README.md"
+
+readme = "README.md"
+
+keywords = [
+    "python",
+    "ipfs",
+    "web3",
+    "substrate",
+    "crust",
+    "pypi-package"
+]
+
+classifiers = [
+    "Operating System :: Unix",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+]
+
+packages = [
+    { include = "crust-interface-patara" },
+]
+
+include = [
+    "LICENSE",
+    ]
+exclude = [
+    ".gitignore",
+    ]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/Multi-Agent-io/crust-interface-patara/issues"
+
 [tool.poetry.dependencies]
 python = "^3.8"
-substrate-interface = "^1.3.2"
+substrate-interface = ">=1.4.0, <2.0"
 
 [tool.poetry.dev-dependencies]
+black = "^22.1.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
