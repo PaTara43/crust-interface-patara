@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "crust-file-uploader"
-version = "1.0.0"
-description = "A simple python tool to upload files to Crust Network"
+name = "crust-interface-patara"
+version = "0.1.0"
+description = "A simple tool to interact with Crust Shadow and Crust Mainnet. Under development"
 authors = ["PaTara43 <p040399@outlook.com>"]
 license = "Apache-2.0"
 
