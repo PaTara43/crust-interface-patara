@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "crust-interface-patara"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple tool to interact with Crust Shadow and Crust Mainnet. Under development"
 authors = ["PaTara43 <p040399@outlook.com>"]
 license = "Apache-2.0"
