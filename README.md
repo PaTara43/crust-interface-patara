@@ -23,9 +23,10 @@ file storage order, add tokens to renewal pool and checking replicas count.
 ```python
 import time
 from crustinterface import Mainnet
+from substrateinterface import KeypairType
 
 seed = "seed"
-mainnet = Mainnet(seed=seed)
+mainnet = Mainnet(seed=seed, crypto_type=KeypairType.SR25519)
 
 # get any IPFS CID and size
 cid, size =  "QmbJtyu82TQSHU52AzRMXBENZGQKYqPsmao9dPuTeorPui", 18  # <any way to get an IPFS CID and size. One may use ipfshttpclient2 from IPFS-Toolkit>
@@ -57,8 +58,10 @@ print(replicas)
 `Shadow` allows you to perform `Xstorage` extrinsic in Crust Shadow network.
 ```python
 from crustinterface import Shadow
+from substrateinterface import KeypairType
+
 seed = "seed"
-shadow = Shadow(seed=seed)
+shadow = Shadow(seed=seed, crypto_type=KeypairType.SR25519)
 
 # get any IPFS CID and size
 cid, size =  "QmbJtyu82TQSHU52AzRMXBENZGQKYqPsmao9dPuTeorPui", 18  # <any way to get an IPFS CID and size. One may use ipfshttpclient2 from IPFS-Toolkit>
