@@ -1,5 +1,5 @@
 venv
 .idea
-crust-interface-patara/js_src/node_modules
-crust-interface-patara/js_src/yarn.lock
+crustinterface/js_src/node_modules
+crustinterface/js_src/yarn.lock
 __pycache__

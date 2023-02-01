@@ -22,7 +22,7 @@ file storage order, add tokens to renewal pool and checking replicas count.
 
 ```python
 import time
-from crust-interface-patara import Mainnet
+from crustinterface import Mainnet
 
 seed = "seed"
 mainnet = Mainnet(seed=seed)
@@ -56,7 +56,7 @@ print(replicas)
 
 `Shadow` allows you to perform `Xstorage` extrinsic in Crust Shadow network.
 ```python
-from crust_file_uploader import Shadow
+from crustinterface import Shadow
 seed = "seed"
 shadow = Shadow(seed=seed)
 

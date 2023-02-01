@@ -29,7 +29,7 @@ classifiers = [
 ]
 
 packages = [
-    { include = "crust-interface-patara" },
+    { include = "crustinterface" },
 ]
 
 include = [
