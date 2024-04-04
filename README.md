@@ -76,3 +76,25 @@ print(balance)
 file_stored = shadow.store_file(cid, size)
 print(file_stored)
 ```
+
+`Parachain` allows you to perform `Xstorage` extrinsic in Crust Polkadot Parachain network.
+```python
+from crustinterface import Parachain
+from substrateinterface import KeypairType
+
+seed = "seed"
+parachain = Parachain(seed=seed, crypto_type=KeypairType.SR25519)
+
+# get any IPFS CID and size
+cid, size =  "QmbJtyu82TQSHU52AzRMXBENZGQKYqPsmao9dPuTeorPui", 18  # <any way to get an IPFS CID and size. One may use ipfshttpclient2 from IPFS-Toolkit>
+
+print(cid, size)
+
+# Check balance
+balance = parachain.get_balance()
+print(balance)
+
+# Store file in Shadow for CSMs
+file_stored = parachain.store_file(cid, size)
+print(file_stored)
+```

@@ -2,7 +2,7 @@ import typing as tp
 
 from substrateinterface import SubstrateInterface, Keypair, KeypairType
 
-from .constants import CRUST_SS_58_FORMAT, CRUST_MAINNET_ENDPOINT, CRUST_SHADOW_ENDPOINT, CRUST_ROCKY_TESTNET_ENDPOINT
+from .constants import CRUST_SS_58_FORMAT, CRUST_MAINNET_ENDPOINT, CRUST_SHADOW_ENDPOINT, CRUST_PARACHAIN_ENDPOINT
 from .decorators import check_interface_opened
 
 
@@ -30,8 +30,8 @@ class Base:
             self.remote_ws = CRUST_SHADOW_ENDPOINT
         elif chain == "mainnet":
             self.remote_ws = CRUST_MAINNET_ENDPOINT
-        elif chain == "rocky":
-            self.remote_ws = CRUST_ROCKY_TESTNET_ENDPOINT
+        elif chain == "parachain":
+            self.remote_ws = CRUST_PARACHAIN_ENDPOINT
         else:
             raise ValueError("Invalid chain name. Choose from [shadow, mainnet, rocky].")
 

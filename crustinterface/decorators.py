@@ -12,7 +12,7 @@ from .constants import (
     CRUST_SS_58_FORMAT,
     CRUST_TYPE_REGISTRY_PRESET,
     CRUST_MAINNET_ENDPOINT,
-    CRUST_ROCKY_TESTNET_ENDPOINT,
+    CRUST_PARACHAIN_ENDPOINT,
 )
 
 
@@ -63,6 +63,6 @@ def open_interface(interface_instance):
         url=interface_instance.remote_ws,
         ss58_format=CRUST_SS_58_FORMAT,
         type_registry_preset=CRUST_TYPE_REGISTRY_PRESET
-        if interface_instance.remote_ws in [CRUST_MAINNET_ENDPOINT, CRUST_ROCKY_TESTNET_ENDPOINT]
+        if interface_instance.remote_ws in [CRUST_MAINNET_ENDPOINT, CRUST_PARACHAIN_ENDPOINT]
         else None
     )

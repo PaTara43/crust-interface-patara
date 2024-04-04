@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "crust-interface-patara"
-version = "0.1.1"
-description = "A simple tool to interact with Crust Shadow and Crust Mainnet. Under development"
+version = "0.2.0"
+description = "A simple tool to interact with Crust Shadow, Crust Polkadot Parachain and Crust Mainnet. Under development"
 authors = ["PaTara43 <p040399@outlook.com>"]
 license = "Apache-2.0"
 
@@ -17,7 +17,8 @@ keywords = [
     "web3",
     "substrate",
     "crust",
-    "pypi-package"
+    "pypi-package",
+    "polkadot"
 ]
 
 classifiers = [
